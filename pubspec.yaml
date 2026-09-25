@@ -1,0 +1,39 @@
+name: grocery_app
+description: Grocery & food e-commerce customer app.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Design system
+  google_fonts: ^6.2.1       # Sora + Inter, loaded on demand and cached
+  flutter_svg: ^2.0.10       # renders the custom icon set
+
+  # State management (added when we hit Module 2 - Auth)
+  flutter_riverpod: ^2.5.1
+
+  # Firebase (added when we hit Module 2 - Auth)
+  firebase_core: ^3.1.0
+  firebase_auth: ^5.1.0
+  cloud_firestore: ^5.0.1
+
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icons/
+  # Note: we're using google_fonts (fetches + caches at runtime) rather than
+  # bundling font files, so no `fonts:` block is needed here. If you'd
+  # rather ship the fonts offline (no runtime fetch), say so and I'll switch
+  # this to bundled .ttf files instead.
