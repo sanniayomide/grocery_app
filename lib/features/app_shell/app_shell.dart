@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/theme/theme.dart';
 import '../../core/widgets/app_icon.dart';
-import '../catalog/data/product_repository.dart';
+import '../catalog/presentation/providers/catalog_providers.dart';
 import '../catalog/domain/models/product.dart';
 import '../catalog/presentation/screens/product_detail_screen.dart';
 import '../cart/presentation/providers/cart_providers.dart';
@@ -28,6 +28,7 @@ class _AppShellState extends ConsumerState<AppShell> {
 
     // Seed demo products after the widget has been initialized.
     Future.microtask(() async {
+      if (!mounted) return;
       try {
         await ref.read(productRepositoryProvider).seedDemoProductsIfEmpty();
       } catch (error) {
