@@ -12,7 +12,12 @@
           "package_name": "com.example.grocery_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "852739594730-6pmhq6k7rjf8erembgklapp76llfdmm0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDWHimJvYWGpke6gbzHktR8XRji0xEjrHM"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852739594730-6pmhq6k7rjf8erembgklapp76llfdmm0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
