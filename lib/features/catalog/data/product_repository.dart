@@ -29,13 +29,9 @@ class ProductRepository {
       if (snapshot.docs.isEmpty) {
         return _sorted(Product.demoProducts());
       }
-
-      final products = snapshot.docs
+      return _sorted(snapshot.docs
           .map((doc) => Product.fromFirestore(doc.data(), doc.id))
-          .toList();
-      return _sorted(products);
-    }).handleError((_) {
-      return _sorted(Product.demoProducts());
+          .toList());
     });
   }
 
