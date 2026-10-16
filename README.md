@@ -1,7 +1,3 @@
-# Grocery App — Module 1: Project Setup & Design System
-
-This is the design-system foundation for the Customer app (Admin and
-Delivery will reuse `core/theme` and `core/widgets` unchanged).
 
 ## What's in here
 
@@ -85,9 +81,4 @@ AppIcon(AppIconType.cart, isActive: true) // gradient-filled, active tab
 AppIcon(AppIconType.search)               // flat muted color, default state
 ```
 
-## Next: Module 2 — Authentication
 
-Once you've confirmed this compiles cleanly on your machine, we'll set up
-Firebase (Auth + Firestore + custom claims for role-based access across
-Customer/Admin/Delivery) and build the sign-in/sign-up screens using these
-same tokens.
