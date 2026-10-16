@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/cart_providers.dart';
-import '../../../orders/presentation/providers/order_providers.dart';
+import '../../../checkout/presentation/screens/checkout_screen.dart';
 
 class CartScreen extends ConsumerWidget {
   const CartScreen({super.key});
@@ -41,14 +41,12 @@ class CartScreen extends ConsumerWidget {
                 style: Theme.of(context).textTheme.titleLarge),
               const SizedBox(height: 16),
               FilledButton(
-                onPressed: () {
-                  ref.read(ordersProvider.notifier).placeOrder(cart);
-                  ref.read(cartNotifierProvider.notifier).clearCart();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Demo order placed. Open Orders to view it.')),
+                onPressed: () async {
+                  await Navigator.of(context).push<bool>(
+                    MaterialPageRoute(builder: (_) => const CheckoutScreen()),
                   );
                 },
-                child: const Text('Place demo order'),
+                child: const Text('Proceed to checkout'),
               ),
             ]),
     );
