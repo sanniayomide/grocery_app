@@ -26,7 +26,7 @@ class _AppShellState extends ConsumerState<AppShell> {
   void initState() {
     super.initState();
 
-    // Seed demo products after the widget has been initialized.
+    // Populate the initial catalogue when no products exist.
     Future.microtask(() async {
       if (!mounted) return;
       try {
