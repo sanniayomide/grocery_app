@@ -25,16 +25,14 @@ class DefaultFirebaseOptions {
 
   // ------------------------------------------------------------------ Android
   // Get these from Firebase Console → Project settings → Your apps → Android
-  static const FirebaseOptions android = FirebaseOptions(
-    // TODO: Replace these 4 fields with your Firebase project's real values:
-    apiKey: 'AIzaSy-REPLACE-ME-WITH-REAL-API-KEY-FROM-FIREBASE-CONSOLE',
-    appId: '1:REPLACE-ME:android:xxxxxxxxxxxxxxxx',
-    messagingSenderId: 'REPLACE_ME_12_DIGIT_SENDER_ID',
-    projectId: 'REPLACE_ME_WITH_FIREBASE_PROJECT_ID',
-    // Optional — these are auto-derived but safe to leave:
-    storageBucket: 'REPLACE_ME_WITH_FIREBASE_PROJECT_ID.appspot.com',
-  );
 
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyDWHimJvYWGpke6gbzHktR8XRji0xEjrHM',
+    appId: '1:852739594730:android:b9301fb030f5a883a23a93',
+    messagingSenderId: '852739594730',
+    projectId: 'grocery-app-21838',
+    storageBucket: 'grocery-app-21838.firebasestorage.app',
+  );
   // ------------------------------------------------------------------ Web/iOS
   // (Filled once you run flutterfire configure. These stubs are placeholders.)
   static const FirebaseOptions web = FirebaseOptions(
