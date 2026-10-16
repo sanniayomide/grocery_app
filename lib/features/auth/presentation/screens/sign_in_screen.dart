@@ -20,7 +20,6 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  //bool _obscurePassword = true;
 
   @override
   void dispose() {
