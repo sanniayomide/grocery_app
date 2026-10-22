@@ -20,6 +20,7 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
   final _state=TextEditingController();
   final _notes=TextEditingController();
   bool _submitting=false;
+  String? _pendingOrderId;
 
   @override
   void dispose() {
@@ -43,7 +44,7 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
       final lines=cart.items.map(OrderLine.fromCartItem).toList(growable:false);
       final subtotal=lines.fold<int>(0,(value,line)=>value+line.totalCents);
       final order=GroceryOrder(
-        id:FirebaseFirestoreOrderId.newId(),
+        id:_pendingOrderId ??= FirebaseFirestoreOrderId.newId(),
         userId:user.uid,items:lines,
         address:DeliveryAddress(
           recipient:_recipient.text.trim(),phone:_phone.text.trim(),
@@ -56,6 +57,7 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
       );
       await ref.read(orderRepositoryProvider).submit(order);
       ref.read(cartNotifierProvider.notifier).clearCart();
+      _pendingOrderId = null;
       if(!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content:Text('Order placed! Pay on delivery.')),

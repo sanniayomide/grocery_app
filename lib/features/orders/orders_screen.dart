@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'presentation/providers/order_providers.dart';
+import 'presentation/screens/order_details_screen.dart';
 
 class OrdersScreen extends ConsumerWidget {
   const OrdersScreen({super.key});
@@ -22,6 +23,9 @@ class OrdersScreen extends ConsumerWidget {
             itemBuilder:(context,index) {
               final order=orders[index];
               return Card(child:ListTile(
+                onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute<void>(builder: (_) => OrderDetailsScreen(order: order)),
+                ),
                 leading:const Icon(Icons.receipt_long_outlined),
                 title:Text('Order #${order.id.substring(order.id.length > 6 ? order.id.length - 6 : 0)}'),
                 subtitle:Text('${order.items.length} products • ${order.status.name}'),

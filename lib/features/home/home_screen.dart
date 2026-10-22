@@ -6,7 +6,6 @@ import '../../core/widgets/primary_button.dart';
 import '../auth/domain/models/app_user.dart';
 import '../auth/domain/models/auth_state.dart';
 import '../auth/presentation/providers/auth_providers.dart';
-import '../catalog/data/product_repository.dart';
 import '../catalog/domain/models/product.dart';
 import '../catalog/presentation/providers/catalog_providers.dart';
 import '../cart/presentation/providers/cart_providers.dart';
@@ -44,7 +43,6 @@ class HomeScreen extends ConsumerWidget {
         child: RefreshIndicator(
           color: AppColors.primaryDark,
           onRefresh: () async {
-            await ref.read(productRepositoryProvider).seedDemoProductsIfEmpty();
             ref.invalidate(allProductsProvider);
           },
           child: ListView(
@@ -167,9 +165,6 @@ class HomeScreen extends ConsumerWidget {
                   message: 'Could not load products right now.',
                   actionLabel: 'Load demo data',
                   onAction: () async {
-                    await ref
-                        .read(productRepositoryProvider)
-                        .seedDemoProductsIfEmpty();
                     ref.invalidate(allProductsProvider);
                   },
                 ),

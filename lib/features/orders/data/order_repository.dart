@@ -29,8 +29,16 @@ class OrderRepository {
     if(order.items.isEmpty || order.items.any((item)=>item.quantity<=0 || item.unitPriceCents<0)) {
       throw StateError('Invalid cart items.');
     }
-    final doc=_orders(uid).doc(order.id);
-    await doc.set(order.toMap());
-    return order;
+    final doc = _orders(uid).doc(order.id);
+    return _firestore.runTransaction((transaction) async {
+      final existing = await transaction.get(doc);
+      if (existing.exists) {
+        final saved = GroceryOrder.fromDocument(existing);
+        if (saved.userId != uid) throw StateError('Order owner mismatch.');
+        return saved;
+      }
+      transaction.set(doc, order.toMap());
+      return order;
+    });
   }
 }
